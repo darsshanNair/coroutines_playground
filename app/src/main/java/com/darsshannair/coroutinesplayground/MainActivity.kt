@@ -19,6 +19,7 @@ import com.darsshannair.coroutinesplayground.presentation.screens.ManualJobHandl
 import com.darsshannair.coroutinesplayground.presentation.screens.MemoryLeakResolverScreen
 import com.darsshannair.coroutinesplayground.presentation.screens.ScopeManagementScreen
 import com.darsshannair.coroutinesplayground.presentation.screens.TransactionListScreen
+import com.darsshannair.coroutinesplayground.presentation.viewmodels.DownloadJobHandlerViewModel
 import com.darsshannair.coroutinesplayground.presentation.viewmodels.LoanEligibilityViewModel
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val loanEligibilityViewModel = LoanEligibilityViewModel()
+        val downloadJobHandlerViewModel = DownloadJobHandlerViewModel()
 
         setContent {
             MaterialTheme {
@@ -49,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     // Existing routes
                     composable("transactions") { TransactionListScreen() }
                     composable("memoryLeakResolver") { MemoryLeakResolverScreen() }
-                    composable("manualJobHandler") { ManualJobHandlerScreen() }
+                    composable("manualJobHandler") { ManualJobHandlerScreen(viewModel = downloadJobHandlerViewModel) }
                     composable("scopeManagement") { ScopeManagementScreen() }
                     composable("dashboard") { DashboardScreen() }
                     composable("dashboardV2") { DashboardScreenV2() }
